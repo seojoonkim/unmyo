@@ -334,7 +334,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <motion.div className="relative max-w-2xl mx-auto text-center" style={{ opacity: heroOpacity }}>
+        <motion.div className="relative max-w-4xl mx-auto text-center" style={{ opacity: heroOpacity }}>
           {/* Live badge */}
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -350,7 +350,7 @@ export default function Home() {
           </motion.div>
 
           {/* Headline — word-by-word reveal */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-8 leading-[1.08] tracking-tight font-serif-kr">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black mb-8 leading-[1.05] tracking-tight font-serif-kr">
             <span className="block text-white">
               {headlineWords.map((word, i) => (
                 <motion.span
@@ -446,7 +446,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <p className="text-purple-400/60 text-xs tracking-[0.25em] uppercase mb-4 font-display">Life Dashboard</p>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight font-serif-kr">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight font-serif-kr">
               내 인생을 스탯으로 본다면
             </h2>
             <p className="text-slate-500 max-w-md mx-auto text-sm leading-relaxed">
@@ -560,7 +560,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <p className="text-rose-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Counselors</p>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight font-serif-kr">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight font-serif-kr">
               여섯 명의 상담사, 각자의 시선
             </h2>
             <p className="text-slate-500 max-w-lg mx-auto text-sm leading-relaxed">
@@ -637,7 +637,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <p className="text-blue-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Process</p>
-            <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight font-serif-kr">3분이면 충분합니다</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight font-serif-kr">3분이면 충분합니다</h2>
           </motion.div>
 
           <div className="space-y-0">
@@ -679,7 +679,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <p className="text-amber-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Together</p>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight font-serif-kr">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight font-serif-kr">
               혼자 보면 아쉽잖아요
             </h2>
             <p className="text-slate-500 max-w-md mx-auto text-sm leading-relaxed">
@@ -739,7 +739,7 @@ export default function Home() {
               transition={{ duration: 0.7, type: "spring" }}
             >
               <p className="text-rose-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Share</p>
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-5 tracking-tight leading-tight font-serif-kr">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-tight font-serif-kr">
                 내 사주를 카드로<br />만들어 공유하기
               </h2>
               <p className="text-slate-500 text-sm leading-relaxed mb-4">
@@ -806,7 +806,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <p className="text-violet-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Features</p>
-            <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight font-serif-kr">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight font-serif-kr">
               사주 앱은 많지만, 이런 건 없었습니다
             </h2>
           </motion.div>
@@ -844,7 +844,7 @@ export default function Home() {
               { ref: c3.ref, count: c3.count, label: "궁합 매칭", color: "from-amber-400 to-amber-600" },
             ].map((c, i) => (
               <div key={i} ref={c.ref} className="text-center">
-                <p className={`text-2xl md:text-4xl font-black tabular-nums tracking-tight bg-gradient-to-b ${c.color} bg-clip-text text-transparent font-display`}>
+                <p className={`text-3xl md:text-5xl font-black tabular-nums tracking-tight bg-gradient-to-b ${c.color} bg-clip-text text-transparent font-display`}>
                   {c.count.toLocaleString()}
                 </p>
                 <p className="text-xs text-slate-600 mt-2 tracking-wide">{c.label}</p>
@@ -881,7 +881,7 @@ export default function Home() {
 
       {/* ═══════════════════ FINAL CTA ═══════════════════ */}
       <section className="relative z-10 px-6 md:px-8 py-32">
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center">
           {/* Character row */}
           <div className="flex justify-center gap-2 mb-10 opacity-[0.2]">
             {characters.map((c) => (
@@ -897,7 +897,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-5 tracking-tight leading-snug font-serif-kr">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-snug font-serif-kr">
               오늘의 운세,<br />확인하셨나요?
             </h2>
             <p className="text-slate-500 text-sm mb-12 max-w-md mx-auto leading-relaxed">
