@@ -342,7 +342,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="mb-8"
           >
-            <Image src="/logo.png" alt="UNMYO" width={180} height={60} className="mx-auto" quality={95} />
+            <Image src="/logo.png" alt="UNMYO" width={280} height={90} className="mx-auto" quality={95} />
           </motion.div>
 
           {/* Live badge */}
@@ -452,7 +452,7 @@ export default function Home() {
           >
             <p className="text-purple-400/60 text-xs tracking-[0.25em] uppercase mb-4 font-display">Life Dashboard</p>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight font-serif-kr">
-              내 인생을 스탯으로 본다면
+              운묘가 보여주는 내 인생 스탯
             </h2>
             <p className="text-slate-500 max-w-md mx-auto text-sm leading-relaxed">
               사주팔자를 기반으로 연애력, 재물력, 직업운 등
@@ -685,7 +685,7 @@ export default function Home() {
           >
             <p className="text-amber-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Together</p>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight font-serif-kr">
-              혼자 보면 아쉽잖아요
+              운묘는 같이 할 때 더 재밌어요
             </h2>
             <p className="text-slate-500 max-w-md mx-auto text-sm leading-relaxed">
               친구, 연인, 동료와 함께 즐기세요.<br />
@@ -752,7 +752,7 @@ export default function Home() {
                 하나의 카드에 담아 인스타 스토리로 공유하세요.
               </p>
               <p className="text-slate-600 text-xs leading-relaxed mb-8">
-                수묵화, 네온, 미니멀, 우주 등 6가지 테마 중 취향에 맞게 고를 수 있어요.
+                운묘만의 6가지 테마 — 수묵화, 네온, 미니멀, 우주 등 취향에 맞게 고를 수 있어요.
                 친구에게 보내면 상대방도 자신의 카드를 만들 수 있습니다.
               </p>
               <Link href="/saju" className="inline-flex items-center gap-2 text-sm text-rose-400/80 hover:text-rose-300 transition-colors duration-300 tracking-wide group">
@@ -812,7 +812,7 @@ export default function Home() {
           >
             <p className="text-violet-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Features</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight font-serif-kr">
-              사주 앱은 많지만, 이런 건 없었습니다
+              운묘에만 있는 것들
             </h2>
           </motion.div>
 
@@ -903,7 +903,7 @@ export default function Home() {
             transition={{ duration: 0.7 }}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-snug font-serif-kr">
-              오늘의 운세,<br />확인하셨나요?
+              운묘와 함께,<br />오늘의 운명을 읽어보세요
             </h2>
             <p className="text-slate-500 text-sm mb-12 max-w-md mx-auto leading-relaxed">
               연애운이 궁금하다면 하린에게, 진로 고민이라면 지호에게,
@@ -928,7 +928,7 @@ export default function Home() {
 
       {/* ═══════════════════ FOOTER ═══════════════════ */}
       <footer className="relative z-10 text-center py-20 border-t border-white/[0.04]">
-        <Image src="/logo.png" alt="UNMYO" width={120} height={40} className="mx-auto mb-2" quality={95} />
+        <Image src="/logo.png" alt="UNMYO" width={160} height={52} className="mx-auto mb-3" quality={95} />
         <p className="text-xs text-slate-600">© 2026 운묘. All rights reserved.</p>
       </footer>
 
