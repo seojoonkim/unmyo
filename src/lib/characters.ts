@@ -69,7 +69,7 @@ export const characters: Character[] = [
     image: "/characters/noeul.png",
     gradient: "from-blue-900/40 to-cyan-900/40",
     gender: "F",
-    age: 68,
+    age: 55,
     role: "counselor",
   },
   {
