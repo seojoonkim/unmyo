@@ -285,7 +285,7 @@ export default function Home() {
   const subWords = ["그", "사람의", "사주는요?"];
 
   return (
-    <main className="relative min-h-screen bg-[#0a0e27] overflow-x-hidden pb-32 md:pb-0">
+    <main className="relative min-h-screen bg-[#0a0e27] overflow-x-hidden">
       <Starfield />
 
       {/* Scroll Progress */}
@@ -932,15 +932,7 @@ export default function Home() {
         <p className="text-xs text-slate-600">© 2026 운묘. All rights reserved.</p>
       </footer>
 
-      {/* ═══════════════════ FLOATING CTA (Mobile) ═══════════════════ */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden p-3 bg-[#0a0e27]/95 backdrop-blur-lg border-t border-white/[0.04]">
-        <Link
-          href="/saju"
-          className="block w-full py-3.5 bg-gradient-to-r from-purple-500 to-rose-500 text-white font-semibold rounded-full text-center text-sm shadow-lg shadow-purple-500/20"
-        >
-          무료로 사주 보기
-        </Link>
-      </div>
+      {/* Floating CTA removed */}
     </main>
   );
 }
