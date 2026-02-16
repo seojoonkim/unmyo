@@ -281,8 +281,8 @@ export default function Home() {
   const proofReveal = useReveal();
 
   // Hero text reveal
-  const headlineWords = ["사주로", "보는"];
-  const subWords = ["나만의", "이야기"];
+  const headlineWords = ["당신의", "사주를", "아시나요."];
+  const subWords = ["그", "사람의", "사주는요?"];
 
   return (
     <main className="relative min-h-screen bg-[#0a0e27] overflow-x-hidden pb-32 md:pb-0">
@@ -387,16 +387,11 @@ export default function Home() {
             className="space-y-3 mb-12"
           >
             <p className="text-base sm:text-lg text-slate-300/90 font-light max-w-lg mx-auto leading-relaxed">
-              생년월일시를 입력하면, AI 상담사가 당신의 사주팔자를
+              AI가 풀어드리는 정통 사주팔자.
               <br className="hidden sm:block" />
-              깊이 있게 풀어드려요. 오행 밸런스, 올해의 흐름,
+              두 사람의 궁합, 운세 대결, 관계의 별자리까지 —
               <br className="hidden sm:block" />
-              연애운, 재물운까지 — 대화하듯 편하게.
-            </p>
-            <p className="text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
-              6명의 캐릭터 상담사가 각자 다른 시선으로 해석하고,
-              <br className="hidden sm:block" />
-              친구와 궁합도 볼 수 있어요. 매일 새로운 운세도 알려드립니다.
+              운명은 함께 읽을 때 완성됩니다.
             </p>
           </motion.div>
 
