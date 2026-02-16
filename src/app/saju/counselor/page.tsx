@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Starfield from "@/components/Starfield";
-import { characters, counselors } from "@/lib/characters";
+import { characters } from "@/lib/characters";
 
 function CounselorContent() {
   const searchParams = useSearchParams();
@@ -48,7 +48,7 @@ function CounselorContent() {
 
         {/* Character Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {counselors.map((char, i) => (
+          {characters.map((char, i) => (
             <button
               key={char.id}
               onClick={() => handleSelect(char.id)}

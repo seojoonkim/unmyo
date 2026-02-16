@@ -58,27 +58,22 @@ export default function Home() {
           <div className="text-center mb-16">
             <p className="text-amber-400/70 text-sm tracking-[0.2em] mb-3">COUNSELORS</p>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              다섯 상담사와 한 마리 고양이
+              여섯 명의 상담사
             </h2>
             <p className="text-slate-400 max-w-md mx-auto">
               각기 다른 오행의 기운을 가진 상담사와<br />운묘의 수호자가 당신을 기다립니다
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6">
             {characters.map((char, i) => (
               <Link
                 key={char.id}
                 href="/saju"
-                className={`group animate-fade-in-up ${char.role === "mascot" ? "col-span-2 md:col-span-1" : ""}`}
+                className={`group animate-fade-in-up`}
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
-                <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-b ${char.gradient} border border-white/5 hover:border-purple-500/30 transition-all duration-500 hover:scale-105 hover:-translate-y-2 ${char.role === "mascot" ? "max-w-[280px] mx-auto" : ""}`}>
-                  {char.role === "mascot" && (
-                    <div className="absolute top-3 right-3 z-20 bg-purple-500/80 text-white text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider">
-                      ✦ MASCOT
-                    </div>
-                  )}
+                <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-b ${char.gradient} border border-white/5 hover:border-purple-500/30 transition-all duration-500 hover:scale-105 hover:-translate-y-2`}>
                   <div className="aspect-[3/4] relative">
                     <Image
                       src={char.image}

@@ -63,13 +63,13 @@ export const characters: Character[] = [
   {
     id: "myo",
     name: "묘",
-    element: "✦ 마스코트",
+    element: "☯ · 음양",
     elementColor: "from-purple-400 to-indigo-400",
-    description: "운묘의 수호자, 천 년을 떠도는 별빛 고양이",
+    description: "고양이의 눈으로 운명을 꿰뚫는, 장난스러운 수호자",
     image: "/characters/myo.png",
     gradient: "from-purple-900/40 to-indigo-900/40",
-    role: "mascot",
+    role: "counselor",
   },
 ];
 
-export const counselors = characters.filter((c) => c.role === "counselor");
+export const counselors = characters;
