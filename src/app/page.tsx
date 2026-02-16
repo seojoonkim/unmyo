@@ -345,10 +345,10 @@ export default function Home() {
 
         <div className="relative max-w-4xl mx-auto text-center" style={{ opacity: parallax.opacity }}>
           {/* Logo */}
-          <div className="mb-8 animate-fade-in-up" style={{ animationDelay: "0.1s", animationFillMode: "both" }}>
+          <div className="mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s", animationFillMode: "both" }}>
             <div className="mx-auto">
-              <span className="text-5xl sm:text-6xl md:text-7xl font-black tracking-[0.15em] bg-gradient-to-r from-purple-300 via-rose-200 to-amber-200 bg-clip-text text-transparent font-display drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]">UNMYO</span>
-              <p className="text-base sm:text-lg text-purple-300/40 tracking-[0.5em] mt-2 font-serif-kr font-medium">운묘</p>
+              <span className="text-3xl sm:text-4xl md:text-5xl font-black tracking-[0.15em] bg-gradient-to-r from-purple-300 via-rose-200 to-amber-200 bg-clip-text text-transparent font-display drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]">UNMYO</span>
+              <p className="text-sm sm:text-base text-purple-300/40 tracking-[0.5em] mt-1.5 font-serif-kr font-medium">운묘</p>
             </div>
           </div>
 
@@ -362,7 +362,7 @@ export default function Home() {
           </div>
 
           {/* Headline — word-by-word reveal via CSS stagger */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.3] tracking-tight font-serif-kr">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.3] tracking-tight font-serif-kr">
             <span className="block text-white">
               {headlineWords.map((word, i) => (
                 <span
