@@ -4,6 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState, useRef, useCallback } from "react";
 import Starfield from "@/components/Starfield";
+import SajuWheel from "@/components/SajuWheel";
+import TypingPreview from "@/components/TypingPreview";
+import ElementIcons from "@/components/ElementIcons";
 import { characters } from "@/lib/characters";
 
 /* ─── Animated Counter (slot-machine style) ─── */
@@ -229,7 +232,25 @@ function RadarChart({ values, visible }: { values: number[]; visible: boolean })
 export default function Home() {
   const [live, setLive] = useState(1247);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [ambientColor, setAmbientColor] = useState<string | null>(null);
   const mousePos = useMouseGlow();
+
+  // Element color mapping for morphing ambient glow
+  const elementColorMap: Record<string, string> = {
+    "木": "rgba(34,197,94,0.12)",
+    "火": "rgba(244,63,94,0.12)",
+    "土": "rgba(245,158,11,0.12)",
+    "金": "rgba(148,163,184,0.12)",
+    "水": "rgba(99,102,241,0.12)",
+    "☯": "rgba(168,85,247,0.12)",
+  };
+
+  const getElementKey = (element: string) => {
+    for (const key of Object.keys(elementColorMap)) {
+      if (element.includes(key)) return key;
+    }
+    return "☯";
+  };
   const heroRef = useRef<HTMLDivElement>(null);
   const parallax = useParallax();
 
@@ -294,10 +315,12 @@ export default function Home() {
         }}
       />
 
-      {/* Ambient gradients */}
+      {/* Ambient gradients — morphs on character hover */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-purple-600/4 rounded-full blur-[150px]" />
-        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-rose-600/3 rounded-full blur-[130px]" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full blur-[150px] ambient-glow-orb"
+          style={{ background: ambientColor || "rgba(124,58,237,0.04)" }} />
+        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full blur-[130px] ambient-glow-orb"
+          style={{ background: ambientColor || "rgba(244,63,94,0.03)" }} />
         <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-blue-600/3 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 right-1/3 w-[500px] h-[500px] bg-amber-500/2 rounded-full blur-[140px]" />
       </div>
@@ -390,6 +413,7 @@ export default function Home() {
               </Link>
             </div>
             <p className="text-xs text-slate-600">가입 없이 · 바로 시작</p>
+            <TypingPreview />
           </div>
         </div>
 
@@ -401,6 +425,9 @@ export default function Home() {
       </section>
 
       <WaveDivider color="rgba(124, 58, 237, 0.04)" />
+
+      {/* ═══════════════════ SAJU WHEEL ═══════════════════ */}
+      <SajuWheel />
 
       {/* ═══════════════════ RPG DASHBOARD ═══════════════════ */}
       <section ref={rpgReveal.ref} className="relative z-10 px-6 md:px-8 py-16 md:py-24">
@@ -524,7 +551,10 @@ export default function Home() {
                   className={`transition-all duration-500 ${charReveal.visible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"}`}
                   style={{ transitionDelay: `${charReveal.visible ? i * 80 + 200 : 0}ms` }}
                 >
-                  <Link href="/saju" className="group block">
+                  <Link href="/saju" className="group block"
+                    onMouseEnter={() => setAmbientColor(elementColorMap[getElementKey(char.element)])}
+                    onMouseLeave={() => setAmbientColor(null)}
+                  >
                     <div
                       className={`card-3d relative overflow-hidden rounded-2xl bg-gradient-to-b ${char.gradient} border border-white/[0.04] hover:border-purple-500/20 transition-all duration-500 hover:shadow-xl hover:shadow-purple-500/10`}
                     >
@@ -717,18 +747,35 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {featureList.map((f, i) => (
-              <div
-                key={i}
-                className={`p-5 rounded-xl bg-gradient-to-b ${f.accent} border border-white/[0.04] hover:border-white/[0.12] hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 ${featureReveal.visible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"}`}
-                style={{ transitionDelay: `${featureReveal.visible ? i * 80 + 200 : 0}ms` }}
-              >
-                <h3 className="text-sm font-semibold text-white mb-1.5">{f.title}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
+          {/* Bento Grid Layout */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[minmax(120px,auto)]">
+            {featureList.map((f, i) => {
+              const isLarge = i === 0 || i === 2; // 사주팔자 + AI 캐릭터 상담
+              return (
+                <div
+                  key={i}
+                  className={`bento-card group ${isLarge ? "col-span-2 row-span-2" : "col-span-1"} ${featureReveal.visible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"}`}
+                  style={{ transitionDelay: `${featureReveal.visible ? i * 80 + 200 : 0}ms` }}
+                >
+                  <div className="relative z-10 h-full flex flex-col justify-between">
+                    <div>
+                      <h3 className={`font-semibold text-white mb-2 font-serif-kr ${isLarge ? "text-lg md:text-xl" : "text-sm"}`}>{f.title}</h3>
+                      <p className={`text-slate-500 leading-relaxed ${isLarge ? "text-sm" : "text-xs"}`}>{f.desc}</p>
+                    </div>
+                    {isLarge && (
+                      <div className="mt-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-xs text-purple-400/80 tracking-wide">자세히 보기 →</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className={`absolute inset-0 rounded-3xl bg-gradient-to-b ${f.accent} opacity-50`} />
+                </div>
+              );
+            })}
           </div>
+
+          {/* Element Icons */}
+          <ElementIcons />
         </div>
       </section>
 
