@@ -100,7 +100,7 @@ export default function Home() {
   const proofReveal = useReveal();
 
   return (
-    <main className="relative min-h-screen bg-[#0a0e27] overflow-x-hidden pb-20 md:pb-0">
+    <main className="relative min-h-screen bg-[#0a0e27] overflow-x-hidden pb-32 md:pb-0">
       <Starfield />
 
       {/* Ambient gradients */}
