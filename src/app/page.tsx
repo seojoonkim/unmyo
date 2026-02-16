@@ -33,6 +33,21 @@ function useCounter(end: number, duration = 2000) {
   return { count, ref };
 }
 
+/* ─── Scroll Reveal Hook ─── */
+function useReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.15 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+  return { ref, visible };
+}
+
 /* ─── Data ─── */
 const charMeta: Record<string, { line: string; tags: string[] }> = {
   yunha: { line: "가능성부터 봅니다", tags: ["성장", "응원", "가능성"] },
@@ -44,28 +59,28 @@ const charMeta: Record<string, { line: string; tags: string[] }> = {
 };
 
 const stats = [
-  { label: "연애력", value: 78, color: "#e879a0" },
-  { label: "재물력", value: 45, color: "#d4a056" },
-  { label: "직업운", value: 92, color: "#9b8cdb" },
-  { label: "건강력", value: 67, color: "#6dba8a" },
-  { label: "인간관계", value: 85, color: "#7ba4d4" },
+  { label: "연애력", value: 78, color: "from-rose-500 to-pink-400", bar: "#e879a0" },
+  { label: "재물력", value: 45, color: "from-amber-500 to-orange-400", bar: "#d4a056" },
+  { label: "직업운", value: 92, color: "from-violet-500 to-purple-400", bar: "#9b8cdb" },
+  { label: "건강력", value: 67, color: "from-emerald-500 to-teal-400", bar: "#6dba8a" },
+  { label: "인간관계", value: 85, color: "from-blue-500 to-cyan-400", bar: "#7ba4d4" },
 ];
 
 const featureList = [
-  { title: "정통 사주팔자", desc: "만세력 기반 오행·십신·격국·신살 분석" },
-  { title: "인생 대시보드", desc: "대운 타임라인과 세운 히트맵" },
-  { title: "AI 캐릭터 상담", desc: "6명의 상담사와 깊이 있는 대화" },
-  { title: "오늘의 운세", desc: "매일 업데이트되는 일운 리포트" },
-  { title: "AI 타로", desc: "고민에 맞는 카드 배열과 해석" },
-  { title: "관상 · 손금", desc: "사진 한 장으로 완성되는 분석" },
-  { title: "사주 × MBTI", desc: "익숙한 프레임으로 보는 내 사주" },
-  { title: "인물 매칭", desc: "나와 같은 사주를 가진 역대 인물" },
+  { title: "정통 사주팔자", desc: "만세력 기반 오행·십신·격국·신살 분석", accent: "from-violet-500/20 to-purple-500/5" },
+  { title: "인생 대시보드", desc: "대운 타임라인과 세운 히트맵", accent: "from-blue-500/20 to-cyan-500/5" },
+  { title: "AI 캐릭터 상담", desc: "6명의 상담사와 깊이 있는 대화", accent: "from-rose-500/20 to-pink-500/5" },
+  { title: "오늘의 운세", desc: "매일 업데이트되는 일운 리포트", accent: "from-amber-500/20 to-orange-500/5" },
+  { title: "AI 타로", desc: "고민에 맞는 카드 배열과 해석", accent: "from-indigo-500/20 to-violet-500/5" },
+  { title: "관상 · 손금", desc: "사진 한 장으로 완성되는 분석", accent: "from-emerald-500/20 to-teal-500/5" },
+  { title: "사주 × MBTI", desc: "익숙한 프레임으로 보는 내 사주", accent: "from-pink-500/20 to-rose-500/5" },
+  { title: "인물 매칭", desc: "나와 같은 사주를 가진 역대 인물", accent: "from-cyan-500/20 to-blue-500/5" },
 ];
 
 const socialItems = [
-  { title: "궁합", desc: "연애·친구·직장·가족. 두 사람의 오행이 만나는 지점을 분석합니다." },
-  { title: "운세 배틀", desc: "이번 주 운이 더 좋은 사람은? 친구와 가볍게 승부를 걸어보세요." },
-  { title: "인맥 우주지도", desc: "내 주변 인연을 별자리처럼 시각화. 숨겨진 귀인을 발견하세요." },
+  { title: "궁합", desc: "연애·친구·직장·가족. 두 사람의 오행이 만나는 지점을 분석합니다.", accent: "border-rose-500/20 hover:border-rose-500/40" },
+  { title: "운세 배틀", desc: "이번 주 운이 더 좋은 사람은? 친구와 가볍게 승부를 걸어보세요.", accent: "border-violet-500/20 hover:border-violet-500/40" },
+  { title: "인맥 우주지도", desc: "내 주변 인연을 별자리처럼 시각화. 숨겨진 귀인을 발견하세요.", accent: "border-blue-500/20 hover:border-blue-500/40" },
 ];
 
 export default function Home() {
@@ -79,19 +94,44 @@ export default function Home() {
   const c2 = useCounter(89231);
   const c3 = useCounter(5120);
 
+  const rpgReveal = useReveal();
+  const socialReveal = useReveal();
+  const featureReveal = useReveal();
+  const proofReveal = useReveal();
+
   return (
     <main className="relative min-h-screen bg-[#0a0e27] overflow-x-hidden">
       <Starfield />
 
+      {/* Ambient gradients */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-purple-600/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-indigo-600/8 rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-purple-600/8 rounded-full blur-[150px]" />
+        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-rose-600/5 rounded-full blur-[130px]" />
+        <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-blue-600/6 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/3 w-[500px] h-[500px] bg-amber-500/4 rounded-full blur-[140px]" />
       </div>
 
-      {/* ═══ HERO ═══ */}
-      <section className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center">
-        <div className="animate-fade-in-up max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] mb-10">
+      {/* ═══════════════════ HERO ═══════════════════ */}
+      <section className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+        {/* Floating character images behind hero */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-[15%] left-[5%] w-24 h-32 md:w-32 md:h-44 rounded-2xl overflow-hidden opacity-20 animate-float-slow rotate-[-6deg]">
+            <Image src="/characters/yunha.png" alt="" fill className="object-cover" sizes="128px" />
+          </div>
+          <div className="absolute top-[20%] right-[5%] w-24 h-32 md:w-32 md:h-44 rounded-2xl overflow-hidden opacity-15 animate-float-slow rotate-[8deg]" style={{ animationDelay: "2s" }}>
+            <Image src="/characters/harin.png" alt="" fill className="object-cover" sizes="128px" />
+          </div>
+          <div className="absolute bottom-[20%] left-[8%] w-20 h-28 md:w-28 md:h-38 rounded-2xl overflow-hidden opacity-10 animate-float-slow rotate-[4deg]" style={{ animationDelay: "4s" }}>
+            <Image src="/characters/noeul.png" alt="" fill className="object-cover" sizes="112px" />
+          </div>
+          <div className="absolute bottom-[25%] right-[8%] w-20 h-28 md:w-28 md:h-38 rounded-2xl overflow-hidden opacity-12 animate-float-slow rotate-[-5deg]" style={{ animationDelay: "3s" }}>
+            <Image src="/characters/seojin.png" alt="" fill className="object-cover" sizes="112px" />
+          </div>
+        </div>
+
+        <div className="relative max-w-2xl mx-auto text-center">
+          {/* Live badge */}
+          <div className="animate-fade-in-up inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] mb-10">
             <span className="relative flex h-1.5 w-1.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
@@ -99,26 +139,36 @@ export default function Home() {
             <span className="text-slate-400 text-xs tracking-wide">{live.toLocaleString()}명이 지금 사주를 보고 있어요</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tight">
-            <span className="text-white">내 사주,</span>
+          {/* Headline */}
+          <h1 className="animate-slide-up text-4xl sm:text-5xl md:text-7xl font-black mb-8 leading-[1.08] tracking-tight">
+            <span className="text-white">사주로 보는</span>
             <br />
-            <span className="bg-gradient-to-r from-purple-300 to-amber-200 bg-clip-text text-transparent">
-              이렇게 재밌었어?
+            <span className="bg-gradient-to-r from-purple-400 via-rose-300 to-amber-300 bg-clip-text text-transparent animate-gradient">
+              나만의 이야기
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-400 mb-3 font-light max-w-md mx-auto leading-relaxed">
-            생년월일 하나면 끝.<br />
-            AI 상담사가 사주를 풀고, 내 인생 스탯을 보여드려요.
-          </p>
-          <p className="text-xs text-slate-500/60 mb-12 tracking-wider">
-            정통 만세력 · 6명의 캐릭터 상담사 · 매일 새로운 운세
-          </p>
+          {/* Detailed subtitle */}
+          <div className="animate-fade-in-up space-y-3 mb-12" style={{ animationDelay: "0.3s" }}>
+            <p className="text-base sm:text-lg text-slate-300/90 font-light max-w-lg mx-auto leading-relaxed">
+              생년월일시를 입력하면, AI 상담사가 당신의 사주팔자를
+              <br className="hidden sm:block" />
+              깊이 있게 풀어드려요. 오행 밸런스, 올해의 흐름,
+              <br className="hidden sm:block" />
+              연애운, 재물운까지 — 대화하듯 편하게.
+            </p>
+            <p className="text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+              6명의 캐릭터 상담사가 각자 다른 시선으로 해석하고,
+              <br className="hidden sm:block" />
+              친구와 궁합도 볼 수 있어요. 매일 새로운 운세도 알려드립니다.
+            </p>
+          </div>
 
-          <div className="flex flex-col items-center gap-3">
+          {/* CTA */}
+          <div className="animate-fade-in-up flex flex-col items-center gap-3" style={{ animationDelay: "0.5s" }}>
             <Link
               href="/saju"
-              className="group inline-flex items-center gap-2.5 px-10 py-4 bg-white text-[#0a0e27] font-semibold rounded-full transition-all duration-300 hover:bg-purple-100 hover:scale-[1.03] text-base"
+              className="group inline-flex items-center gap-2.5 px-10 py-4 bg-gradient-to-r from-purple-500 to-rose-500 hover:from-purple-400 hover:to-amber-400 text-white font-semibold rounded-full transition-all duration-500 hover:scale-[1.04] text-base shadow-lg shadow-purple-500/20 hover:shadow-rose-500/20 animate-glow"
             >
               무료로 시작하기
               <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -136,59 +186,64 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ RPG DASHBOARD ═══ */}
-      <section className="relative z-10 px-4 py-28">
+      {/* ═══════════════════ RPG DASHBOARD ═══════════════════ */}
+      <section ref={rpgReveal.ref} className="relative z-10 px-4 py-28">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <p className="text-slate-500 text-[11px] tracking-[0.3em] uppercase mb-4">Life Dashboard</p>
+          <div className={`text-center mb-16 transition-all duration-700 ${rpgReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <p className="text-purple-400/60 text-[11px] tracking-[0.3em] uppercase mb-4">Life Dashboard</p>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight">
               내 인생을 스탯으로 본다면
             </h2>
             <p className="text-slate-500 max-w-md mx-auto text-sm leading-relaxed">
-              막연한 미래 대신, 구체적인 수치로 보여드립니다.
+              사주팔자를 기반으로 연애력, 재물력, 직업운 등
+              <br />나의 운명 스탯을 한눈에 확인하세요.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-5 animate-fade-in-up" style={{ animationDelay: "0.15s" }}>
+            {/* Stat bars with color */}
+            <div className={`space-y-5 transition-all duration-700 delay-200 ${rpgReveal.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}>
               {stats.map((s, i) => (
-                <div key={i}>
+                <div key={i} className="group">
                   <div className="flex justify-between text-sm mb-2">
                     <span className="text-slate-300 font-medium tracking-wide">{s.label}</span>
-                    <span className="text-slate-500 tabular-nums font-mono text-xs">{s.value}</span>
+                    <span className={`tabular-nums font-mono text-xs font-bold bg-gradient-to-r ${s.color} bg-clip-text text-transparent`}>{s.value}</span>
                   </div>
-                  <div className="h-2 bg-white/[0.04] rounded-full overflow-hidden">
+                  <div className="h-2.5 bg-white/[0.04] rounded-full overflow-hidden">
                     <div
-                      className="h-full rounded-full"
+                      className="h-full rounded-full transition-all duration-1000 ease-out"
                       style={{
-                        width: `${s.value}%`,
-                        backgroundColor: s.color,
-                        opacity: 0.8,
+                        width: rpgReveal.visible ? `${s.value}%` : "0%",
+                        backgroundColor: s.bar,
+                        boxShadow: `0 0 16px ${s.bar}30`,
+                        transitionDelay: `${i * 150 + 400}ms`,
                       }}
                     />
                   </div>
                 </div>
               ))}
-              <p className="text-xs text-slate-600 pt-2 tracking-wide">
-                * 실제 사주 분석 기반으로 생성됩니다
-              </p>
             </div>
 
-            <div className="animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-              <div className="rounded-2xl bg-white/[0.02] border border-white/[0.06] p-8">
+            {/* Dashboard card with character image */}
+            <div className={`transition-all duration-700 delay-400 ${rpgReveal.visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}>
+              <div className="relative rounded-2xl bg-gradient-to-br from-purple-900/20 via-slate-900/40 to-rose-900/10 border border-white/[0.06] p-8 animate-glow">
+                {/* Character peek */}
+                <div className="absolute -top-10 -right-4 w-20 h-28 rounded-xl overflow-hidden opacity-40 rotate-6">
+                  <Image src="/characters/myo.png" alt="" fill className="object-cover" sizes="80px" />
+                </div>
                 <div className="flex items-center justify-between mb-6">
                   <p className="text-[10px] text-slate-600 tracking-[0.2em] uppercase">Sample Dashboard</p>
-                  <span className="text-[10px] text-slate-600 px-2 py-0.5 border border-white/[0.06] rounded-full">Preview</span>
+                  <span className="text-[10px] text-purple-400/60 px-2 py-0.5 border border-purple-500/20 rounded-full">Preview</span>
                 </div>
                 <div className="text-center mb-6">
                   <p className="text-2xl font-black text-white tracking-tight">壬午 일주</p>
-                  <p className="text-sm text-slate-500 mt-1">자유로운 전략가</p>
+                  <p className="text-sm text-purple-300/60 mt-1">자유로운 전략가</p>
                 </div>
                 <div className="grid grid-cols-3 gap-3">
                   {[
-                    { label: "HP", value: "67", sub: "건강운", color: "text-emerald-400/70" },
-                    { label: "MP", value: "85", sub: "멘탈", color: "text-blue-400/70" },
-                    { label: "Gold", value: "45", sub: "재물운", color: "text-amber-400/70" },
+                    { label: "HP", value: "67", sub: "건강운", color: "text-emerald-400" },
+                    { label: "MP", value: "85", sub: "멘탈", color: "text-blue-400" },
+                    { label: "Gold", value: "45", sub: "재물운", color: "text-amber-400" },
                   ].map((g, i) => (
                     <div key={i} className="p-3 rounded-xl bg-white/[0.03] text-center">
                       <p className="text-[10px] text-slate-600 mb-1">{g.label}</p>
@@ -197,15 +252,15 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] text-center">
-                  <p className="text-xs text-slate-500">용신 <span className="text-slate-300 font-medium">金</span> — 메탈 소재의 액세서리가 행운을 끌어옵니다</p>
+                <div className="mt-5 p-3 rounded-xl bg-gradient-to-r from-amber-500/5 to-transparent border border-amber-500/10 text-center">
+                  <p className="text-xs text-slate-500">용신 <span className="text-amber-300 font-medium">金</span> — 메탈 소재의 액세서리가 행운을 끌어옵니다</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/saju" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors duration-300 tracking-wide group">
+            <Link href="/saju" className="inline-flex items-center gap-2 text-sm text-purple-400/80 hover:text-purple-300 transition-colors duration-300 tracking-wide group">
               내 스탯 확인하기
               <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -215,16 +270,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ CHARACTERS ═══ */}
+      {/* ═══════════════════ CHARACTERS ═══════════════════ */}
       <section className="relative z-10 px-4 py-28">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 animate-fade-in-up">
-            <p className="text-slate-500 text-[11px] tracking-[0.3em] uppercase mb-4">Counselors</p>
+            <p className="text-rose-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Counselors</p>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight">
-              여섯 명의 상담사
+              여섯 명의 상담사, 각자의 시선
             </h2>
-            <p className="text-slate-500 max-w-md mx-auto text-sm leading-relaxed">
-              같은 사주도 누가 읽느냐에 따라 다른 이야기가 됩니다.
+            <p className="text-slate-500 max-w-lg mx-auto text-sm leading-relaxed">
+              따뜻한 위로가 필요하신가요, 냉정한 팩트가 필요하신가요?
+              <br />마음이 가는 상담사를 선택하세요. 같은 사주도 완전히 달라집니다.
             </p>
           </div>
 
@@ -236,15 +292,15 @@ export default function Home() {
                   key={char.id}
                   href="/saju"
                   className="group animate-fade-in-up"
-                  style={{ animationDelay: `${i * 0.07}s` }}
+                  style={{ animationDelay: `${i * 0.1}s` }}
                 >
-                  <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-b ${char.gradient} border border-white/[0.04] hover:border-white/[0.1] transition-all duration-500 hover:-translate-y-1`}>
+                  <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-b ${char.gradient} border border-white/[0.04] hover:border-purple-500/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-purple-500/5`}>
                     <div className="aspect-[3/4] relative">
                       <Image
                         src={char.image}
                         alt={char.name}
                         fill
-                        className="object-cover object-top"
+                        className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-700"
                         sizes="(max-width: 768px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e27] via-[#0a0e27]/20 to-transparent" />
@@ -259,8 +315,8 @@ export default function Home() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold text-white mb-0.5">{char.name}</h3>
-                      <p className="text-xs text-slate-500 italic mb-2">{meta?.line}</p>
-                      <div className="flex flex-wrap gap-1.5">
+                      <p className="text-xs text-slate-400/80 italic mb-2">{meta?.line}</p>
+                      <div className="flex flex-wrap gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         {meta?.tags.map((t) => (
                           <span key={t} className="text-[10px] text-slate-500 tracking-wide">#{t}</span>
                         ))}
@@ -274,26 +330,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ HOW IT WORKS ═══ */}
+      {/* ═══════════════════ HOW IT WORKS ═══════════════════ */}
       <section className="relative z-10 px-4 py-28">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 animate-fade-in-up">
-            <p className="text-slate-500 text-[11px] tracking-[0.3em] uppercase mb-4">Process</p>
+            <p className="text-blue-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Process</p>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight">3분이면 충분합니다</h2>
           </div>
 
           <div className="space-y-0">
             {[
-              { n: "01", title: "생년월일시 입력", desc: "양력 또는 음력, 태어난 시간까지. 정확할수록 깊어집니다." },
-              { n: "02", title: "상담사 선택", desc: "따뜻한 위로가 필요한지, 냉정한 분석이 필요한지. 마음 가는 사람에게." },
-              { n: "03", title: "AI 사주 상담", desc: "사주 해석부터 올해 운세, 연애운, 커리어까지. 대화로 풀어갑니다." },
+              { n: "01", title: "생년월일시 입력", desc: "양력 또는 음력, 태어난 시간까지. 정확할수록 깊이 있는 분석이 가능해요." },
+              { n: "02", title: "상담사 선택", desc: "6명의 상담사 중 마음 가는 분을 고르세요. 연애 고민이면 하린, 커리어 고민이면 지호가 잘 맞아요." },
+              { n: "03", title: "AI 사주 상담 시작", desc: "대화하듯 편하게 물어보세요. 사주 해석, 올해 운세, 연애운, 재물운까지 상세하게 풀어드려요." },
             ].map((s, i) => (
               <div
                 key={i}
-                className="animate-fade-in-up flex items-start gap-6 py-8 border-b border-white/[0.04] last:border-0"
-                style={{ animationDelay: `${i * 0.12}s` }}
+                className="animate-fade-in-up flex items-start gap-6 py-8 border-b border-white/[0.04] last:border-0 group hover:bg-white/[0.01] -mx-4 px-4 rounded-xl transition-colors duration-300"
+                style={{ animationDelay: `${i * 0.15}s` }}
               >
-                <span className="text-xs text-slate-600 font-mono tracking-wider pt-1 shrink-0">{s.n}</span>
+                <span className={`text-2xl font-black tabular-nums shrink-0 pt-0.5 bg-gradient-to-b ${
+                  i === 0 ? "from-purple-400 to-purple-600" : i === 1 ? "from-rose-400 to-rose-600" : "from-amber-400 to-amber-600"
+                } bg-clip-text text-transparent`}>{s.n}</span>
                 <div>
                   <h3 className="text-lg font-bold text-white mb-1.5">{s.title}</h3>
                   <p className="text-sm text-slate-500 leading-relaxed">{s.desc}</p>
@@ -304,16 +362,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ SOCIAL ═══ */}
-      <section className="relative z-10 px-4 py-28">
+      {/* ═══════════════════ SOCIAL ═══════════════════ */}
+      <section ref={socialReveal.ref} className="relative z-10 px-4 py-28">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <p className="text-slate-500 text-[11px] tracking-[0.3em] uppercase mb-4">Together</p>
+          <div className={`text-center mb-16 transition-all duration-700 ${socialReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <p className="text-amber-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Together</p>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight">
               혼자 보면 아쉽잖아요
             </h2>
             <p className="text-slate-500 max-w-md mx-auto text-sm leading-relaxed">
-              궁합을 확인하고, 배틀하고, 관계의 지도를 그려보세요.
+              친구, 연인, 동료와 함께 즐기세요.<br />
+              궁합을 확인하고, 운세 배틀을 하고, 관계의 우주를 그려보세요.
             </p>
           </div>
 
@@ -321,31 +380,46 @@ export default function Home() {
             {socialItems.map((f, i) => (
               <div
                 key={i}
-                className="animate-fade-in-up p-7 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.1] transition-all duration-300"
-                style={{ animationDelay: `${i * 0.1}s` }}
+                className={`p-7 rounded-2xl bg-white/[0.02] border ${f.accent} transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/5 ${
+                  socialReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+                style={{ transitionDelay: `${i * 150 + 200}ms` }}
               >
                 <h3 className="text-lg font-bold text-white mb-3">{f.title}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
+
+          {/* Floating character between social cards */}
+          <div className="flex justify-center mt-8 gap-3 opacity-30">
+            {["jiho", "harin", "myo"].map((id) => (
+              <div key={id} className="w-12 h-16 rounded-lg overflow-hidden animate-float-slow" style={{ animationDelay: `${Math.random() * 3}s` }}>
+                <Image src={`/characters/${id}.png`} alt="" width={48} height={64} className="object-cover object-top w-full h-full" />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ═══ PROFILE CARD ═══ */}
+      {/* ═══════════════════ PROFILE CARD ═══════════════════ */}
       <section className="relative z-10 px-4 py-28">
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="animate-fade-in-up">
-              <p className="text-slate-500 text-[11px] tracking-[0.3em] uppercase mb-4">Share</p>
+              <p className="text-rose-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Share</p>
               <h2 className="text-3xl md:text-4xl font-black text-white mb-5 tracking-tight leading-tight">
                 내 사주를 카드로<br />만들어 공유하기
               </h2>
-              <p className="text-slate-500 text-sm leading-relaxed mb-8">
-                오행 밸런스, 올해 키워드, 성격 유형까지<br />
+              <p className="text-slate-500 text-sm leading-relaxed mb-4">
+                오행 밸런스, 올해 키워드, 성격 유형까지
                 하나의 카드에 담아 인스타 스토리로 공유하세요.
               </p>
-              <Link href="/saju" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors duration-300 tracking-wide group">
+              <p className="text-slate-600 text-xs leading-relaxed mb-8">
+                수묵화, 네온, 미니멀, 우주 등 6가지 테마 중 취향에 맞게 고를 수 있어요.
+                친구에게 보내면 상대방도 자신의 카드를 만들 수 있습니다.
+              </p>
+              <Link href="/saju" className="inline-flex items-center gap-2 text-sm text-rose-400/80 hover:text-rose-300 transition-colors duration-300 tracking-wide group">
                 내 카드 만들기
                 <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -353,26 +427,30 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="animate-fade-in-up flex justify-center" style={{ animationDelay: "0.2s" }}>
-              <div className="w-60 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-6 hover:border-white/[0.1] transition-all duration-500">
-                <div className="text-center mb-5">
-                  <p className="text-xl font-black text-white">壬午 일주</p>
-                  <p className="text-xs text-slate-500 mt-1">자유로운 전략가</p>
+            <div className="flex justify-center">
+              <div className="relative">
+                {/* Character behind card */}
+                <div className="absolute -top-8 -left-6 w-16 h-24 rounded-lg overflow-hidden opacity-25 rotate-[-10deg] animate-float-slow">
+                  <Image src="/characters/yunha.png" alt="" fill className="object-cover" sizes="64px" />
                 </div>
-                <div className="space-y-3 text-xs">
-                  <div className="flex justify-between"><span className="text-slate-600">오행</span><span className="text-slate-400">水 › 火 › 木 › 金 › 土</span></div>
-                  <div className="flex justify-between"><span className="text-slate-600">용신</span><span className="text-slate-400">金</span></div>
-                  <div className="flex justify-between"><span className="text-slate-600">2026</span><span className="text-slate-400">도약의 해</span></div>
-                </div>
-                <div className="mt-5 flex flex-wrap gap-1.5 justify-center">
-                  {["직감형", "승부사", "자유영혼"].map((t) => (
-                    <span key={t} className="text-[10px] text-slate-500 px-2 py-0.5 rounded-full border border-white/[0.06]">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-5 pt-4 border-t border-white/[0.04] text-center">
-                  <p className="text-[10px] text-slate-600 tracking-[0.15em]">UNMYO</p>
+                <div className="w-60 rounded-2xl bg-gradient-to-br from-purple-900/20 to-rose-900/10 border border-white/[0.06] p-6 hover:border-purple-500/20 transition-all duration-500 hover:rotate-1 animate-glow">
+                  <div className="text-center mb-5">
+                    <p className="text-xl font-black text-white">壬午 일주</p>
+                    <p className="text-xs text-purple-300/50 mt-1">자유로운 전략가</p>
+                  </div>
+                  <div className="space-y-3 text-xs">
+                    <div className="flex justify-between"><span className="text-slate-600">오행</span><span className="text-slate-400">水 › 火 › 木 › 金 › 土</span></div>
+                    <div className="flex justify-between"><span className="text-slate-600">용신</span><span className="text-amber-300/80">金</span></div>
+                    <div className="flex justify-between"><span className="text-slate-600">2026</span><span className="text-rose-300/80">도약의 해</span></div>
+                  </div>
+                  <div className="mt-5 flex flex-wrap gap-1.5 justify-center">
+                    {["직감형", "승부사", "자유영혼"].map((t) => (
+                      <span key={t} className="text-[10px] text-slate-500 px-2 py-0.5 rounded-full border border-white/[0.06]">{t}</span>
+                    ))}
+                  </div>
+                  <div className="mt-5 pt-4 border-t border-white/[0.04] text-center">
+                    <p className="text-[10px] text-slate-600 tracking-[0.15em]">UNMYO</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -380,11 +458,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ FEATURES ═══ */}
-      <section className="relative z-10 px-4 py-28">
+      {/* ═══════════════════ FEATURES ═══════════════════ */}
+      <section ref={featureReveal.ref} className="relative z-10 px-4 py-28">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <p className="text-slate-500 text-[11px] tracking-[0.3em] uppercase mb-4">Features</p>
+          <div className={`text-center mb-16 transition-all duration-700 ${featureReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <p className="text-violet-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Features</p>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight">
               사주 앱은 많지만, 이런 건 없었습니다
             </h2>
@@ -394,8 +472,10 @@ export default function Home() {
             {featureList.map((f, i) => (
               <div
                 key={i}
-                className="animate-fade-in-up p-5 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:border-white/[0.08] transition-all duration-300"
-                style={{ animationDelay: `${i * 0.05}s` }}
+                className={`p-5 rounded-xl bg-gradient-to-b ${f.accent} border border-white/[0.04] hover:border-white/[0.1] transition-all duration-500 hover:-translate-y-1 ${
+                  featureReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
+                style={{ transitionDelay: `${i * 80 + 200}ms` }}
               >
                 <h3 className="text-sm font-semibold text-white mb-1.5">{f.title}</h3>
                 <p className="text-xs text-slate-500 leading-relaxed">{f.desc}</p>
@@ -405,17 +485,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ SOCIAL PROOF ═══ */}
-      <section className="relative z-10 px-4 py-28">
+      {/* ═══════════════════ SOCIAL PROOF ═══════════════════ */}
+      <section ref={proofReveal.ref} className="relative z-10 px-4 py-28">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-3 gap-4 mb-20">
             {[
-              { ref: c1.ref, count: c1.count, label: "사주 분석 완료" },
-              { ref: c2.ref, count: c2.count, label: "AI 상담 대화" },
-              { ref: c3.ref, count: c3.count, label: "궁합 매칭" },
+              { ref: c1.ref, count: c1.count, label: "사주 분석 완료", color: "from-purple-400 to-purple-600" },
+              { ref: c2.ref, count: c2.count, label: "AI 상담 대화", color: "from-rose-400 to-rose-600" },
+              { ref: c3.ref, count: c3.count, label: "궁합 매칭", color: "from-amber-400 to-amber-600" },
             ].map((c, i) => (
-              <div key={i} ref={c.ref} className="text-center animate-fade-in-up">
-                <p className="text-2xl md:text-4xl font-black text-white tabular-nums tracking-tight">{c.count.toLocaleString()}</p>
+              <div key={i} ref={c.ref} className="text-center">
+                <p className={`text-2xl md:text-4xl font-black tabular-nums tracking-tight bg-gradient-to-b ${c.color} bg-clip-text text-transparent`}>
+                  {c.count.toLocaleString()}
+                </p>
                 <p className="text-[11px] text-slate-600 mt-2 tracking-wide">{c.label}</p>
               </div>
             ))}
@@ -427,7 +509,13 @@ export default function Home() {
               { text: "셀카 한 장으로 관상 분석이 되는 게 말이 됨?", who: "27세, 대학원생" },
               { text: "운세배틀 지는 사람이 커피 사기로 했는데 매일 해요", who: "24세, 디자이너" },
             ].map((r, i) => (
-              <div key={i} className="animate-fade-in-up p-6 rounded-xl bg-white/[0.02] border border-white/[0.04]" style={{ animationDelay: `${i * 0.1}s` }}>
+              <div
+                key={i}
+                className={`p-6 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:border-white/[0.08] transition-all duration-500 ${
+                  proofReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
+                style={{ transitionDelay: `${i * 120 + 300}ms` }}
+              >
                 <p className="text-sm text-slate-300 leading-relaxed mb-4">&ldquo;{r.text}&rdquo;</p>
                 <p className="text-xs text-slate-600">— {r.who}</p>
               </div>
@@ -436,19 +524,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ FINAL CTA ═══ */}
+      {/* ═══════════════════ FINAL CTA ═══════════════════ */}
       <section className="relative z-10 px-4 py-28">
-        <div className="max-w-2xl mx-auto text-center animate-fade-in-up">
+        <div className="max-w-2xl mx-auto text-center">
+          {/* Character row */}
+          <div className="flex justify-center gap-2 mb-10 opacity-40">
+            {characters.map((c) => (
+              <div key={c.id} className="w-10 h-14 rounded-lg overflow-hidden animate-float-slow" style={{ animationDelay: `${Math.random() * 4}s` }}>
+                <Image src={c.image} alt="" width={40} height={56} className="object-cover object-top w-full h-full" />
+              </div>
+            ))}
+          </div>
+
           <h2 className="text-3xl md:text-4xl font-black text-white mb-5 tracking-tight leading-snug">
             오늘의 운세,<br />확인하셨나요?
           </h2>
           <p className="text-slate-500 text-sm mb-12 max-w-md mx-auto leading-relaxed">
-            연애운이 궁금하다면 하린에게, 진로 고민이라면 지호에게,<br />
-            인생의 큰 그림은 노을에게 물어보세요.
+            연애운이 궁금하다면 하린에게, 진로 고민이라면 지호에게,
+            <br />인생의 큰 그림은 노을에게 물어보세요.
           </p>
           <Link
             href="/saju"
-            className="group inline-flex items-center gap-2.5 px-12 py-5 bg-white text-[#0a0e27] font-semibold rounded-full transition-all duration-300 hover:bg-purple-100 hover:scale-[1.03] text-lg"
+            className="group inline-flex items-center gap-2.5 px-12 py-5 bg-gradient-to-r from-purple-500 via-rose-500 to-amber-500 hover:from-amber-500 hover:via-rose-500 hover:to-purple-500 text-white font-semibold rounded-full transition-all duration-700 hover:scale-[1.04] text-lg shadow-xl shadow-purple-500/15 animate-gradient"
           >
             내 사주 확인하기
             <svg className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -459,17 +556,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ FOOTER ═══ */}
+      {/* ═══════════════════ FOOTER ═══════════════════ */}
       <footer className="relative z-10 text-center py-16 border-t border-white/[0.04]">
-        <p className="text-sm font-semibold text-white tracking-wider mb-1">UNMYO</p>
+        <p className="text-sm font-semibold bg-gradient-to-r from-purple-400 to-rose-300 bg-clip-text text-transparent tracking-wider mb-1">UNMYO</p>
         <p className="text-xs text-slate-600">© 2026 운묘. All rights reserved.</p>
       </footer>
 
-      {/* ═══ FLOATING CTA (Mobile) ═══ */}
+      {/* ═══════════════════ FLOATING CTA (Mobile) ═══════════════════ */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden p-3 bg-[#0a0e27]/95 backdrop-blur-lg border-t border-white/[0.04]">
         <Link
           href="/saju"
-          className="block w-full py-3.5 bg-white text-[#0a0e27] font-semibold rounded-full text-center text-sm"
+          className="block w-full py-3.5 bg-gradient-to-r from-purple-500 to-rose-500 text-white font-semibold rounded-full text-center text-sm shadow-lg shadow-purple-500/20"
         >
           무료로 사주 보기
         </Link>
