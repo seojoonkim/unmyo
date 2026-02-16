@@ -324,8 +324,8 @@ export default function Home() {
           {/* Logo */}
           <div className="mb-8 animate-fade-in-up" style={{ animationDelay: "0.1s", animationFillMode: "both" }}>
             <div className="mx-auto">
-              <span className="text-4xl sm:text-5xl md:text-6xl font-black tracking-wider bg-gradient-to-r from-purple-400 via-rose-300 to-amber-300 bg-clip-text text-transparent font-display">UN<span className="relative">M<span className="absolute -top-2 left-1/2 -translate-x-1/2 text-xs">🐱</span></span>YO</span>
-              <p className="text-sm sm:text-base text-slate-400/60 tracking-[0.3em] mt-1 font-serif-kr">운묘</p>
+              <span className="text-5xl sm:text-6xl md:text-7xl font-black tracking-[0.15em] bg-gradient-to-r from-purple-300 via-rose-200 to-amber-200 bg-clip-text text-transparent font-display drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]">UNMYO</span>
+              <p className="text-base sm:text-lg text-purple-300/40 tracking-[0.5em] mt-2 font-serif-kr font-medium">운묘</p>
             </div>
           </div>
 
@@ -339,7 +339,7 @@ export default function Home() {
           </div>
 
           {/* Headline — word-by-word reveal via CSS stagger */}
-          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.05] tracking-tight font-serif-kr">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.05] tracking-tight font-serif-kr">
             <span className="block text-white">
               {headlineWords.map((word, i) => (
                 <span
@@ -407,7 +407,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${rpgReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-purple-400/60 text-xs tracking-[0.25em] uppercase mb-4 font-display">Life Dashboard</p>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight font-serif-kr">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight font-serif-kr">
               운묘가 보여주는 내 인생 스탯
             </h2>
             <p className="text-slate-500 max-w-md mx-auto text-sm leading-relaxed">
@@ -506,7 +506,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${charReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-rose-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Counselors</p>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight font-serif-kr">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight font-serif-kr">
               여섯 명의 상담사, 각자의 시선
             </h2>
             <p className="text-slate-500 max-w-lg mx-auto text-sm leading-relaxed">
@@ -572,7 +572,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${howReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-blue-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Process</p>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight font-serif-kr">3분이면 충분합니다</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight font-serif-kr">3분이면 충분합니다</h2>
           </div>
 
           <div className="space-y-0">
@@ -606,7 +606,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${socialReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-amber-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Together</p>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight font-serif-kr">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight font-serif-kr">
               운묘는 같이 할 때 더 재밌어요
             </h2>
             <p className="text-slate-500 max-w-md mx-auto text-sm leading-relaxed">
@@ -656,7 +656,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className={`transition-all duration-700 ${profileReveal.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
               <p className="text-rose-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Share</p>
-              <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-tight font-serif-kr">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-tight font-serif-kr">
                 내 사주를 카드로<br />만들어 공유하기
               </h2>
               <p className="text-slate-500 text-sm leading-relaxed mb-4">
@@ -712,7 +712,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${featureReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-violet-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Features</p>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight font-serif-kr">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight font-serif-kr">
               운묘에만 있는 것들
             </h2>
           </div>
@@ -785,7 +785,7 @@ export default function Home() {
           </div>
 
           <div className={`transition-all duration-700 ${ctaReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-snug font-serif-kr">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-snug font-serif-kr">
               운묘와 함께,<br />오늘의 운명을 읽어보세요
             </h2>
             <p className="text-slate-500 text-sm mb-12 max-w-md mx-auto leading-relaxed">
@@ -812,8 +812,8 @@ export default function Home() {
       {/* ═══════════════════ FOOTER ═══════════════════ */}
       <footer className="relative z-10 text-center py-12 border-t border-white/[0.04]">
         <div className="mx-auto mb-3">
-          <span className="text-2xl font-black tracking-wider bg-gradient-to-r from-purple-400 via-rose-300 to-amber-300 bg-clip-text text-transparent font-display">UN<span className="relative">M<span className="absolute -top-1.5 left-1/2 -translate-x-1/2 text-[8px]">🐱</span></span>YO</span>
-          <p className="text-xs text-slate-400/50 tracking-[0.3em] mt-0.5 font-serif-kr">운묘</p>
+          <span className="text-3xl font-black tracking-[0.15em] bg-gradient-to-r from-purple-300 via-rose-200 to-amber-200 bg-clip-text text-transparent font-display">UNMYO</span>
+          <p className="text-sm text-purple-300/30 tracking-[0.5em] mt-1 font-serif-kr">운묘</p>
         </div>
         <p className="text-xs text-slate-600">© 2026 운묘. All rights reserved.</p>
       </footer>
