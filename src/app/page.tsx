@@ -339,7 +339,7 @@ export default function Home() {
           </div>
 
           {/* Headline — word-by-word reveal via CSS stagger */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.05] tracking-tight font-serif-kr">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.3] tracking-tight font-serif-kr">
             <span className="block text-white">
               {headlineWords.map((word, i) => (
                 <span
