@@ -10,7 +10,7 @@ export default function Starfield() {
     if (!container) return;
 
     // Stars — reduced count, lower opacity for softer look
-    const starCount = 80;
+    const starCount = 40;
     const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < starCount; i++) {
@@ -32,16 +32,7 @@ export default function Starfield() {
 
     container.appendChild(fragment);
 
-    // Shooting stars — less frequent
-    const shootInterval = setInterval(() => {
-      const shoot = document.createElement("div");
-      shoot.className = "shooting-star";
-      shoot.style.left = `${Math.random() * 70 + 10}%`;
-      shoot.style.top = `${Math.random() * 40}%`;
-      shoot.style.setProperty("--angle", `${Math.random() * 30 + 20}deg`);
-      container.appendChild(shoot);
-      setTimeout(() => shoot.remove(), 1500);
-    }, 6000 + Math.random() * 5000);
+    // Shooting stars removed for mobile perf
 
     // Nebula clouds — softer
     for (let i = 0; i < 2; i++) {
@@ -62,7 +53,6 @@ export default function Starfield() {
     }
 
     return () => {
-      clearInterval(shootInterval);
       container.innerHTML = "";
     };
   }, []);

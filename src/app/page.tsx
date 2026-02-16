@@ -323,7 +323,10 @@ export default function Home() {
         <div className="relative max-w-4xl mx-auto text-center" style={{ opacity: parallax.opacity }}>
           {/* Logo */}
           <div className="mb-8 animate-fade-in-up" style={{ animationDelay: "0.1s", animationFillMode: "both" }}>
-            <Image src="/logo.png" alt="UNMYO" width={280} height={90} className="mx-auto" quality={95} />
+            <div className="mx-auto">
+              <span className="text-4xl sm:text-5xl md:text-6xl font-black tracking-wider bg-gradient-to-r from-purple-400 via-rose-300 to-amber-300 bg-clip-text text-transparent font-display">UN<span className="relative">M<span className="absolute -top-2 left-1/2 -translate-x-1/2 text-xs">🐱</span></span>YO</span>
+              <p className="text-sm sm:text-base text-slate-400/60 tracking-[0.3em] mt-1 font-serif-kr">운묘</p>
+            </div>
           </div>
 
           {/* Live badge */}
@@ -336,7 +339,7 @@ export default function Home() {
           </div>
 
           {/* Headline — word-by-word reveal via CSS stagger */}
-          <h1 className="text-2xl sm:text-4xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.05] tracking-tight font-serif-kr">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.05] tracking-tight font-serif-kr">
             <span className="block text-white">
               {headlineWords.map((word, i) => (
                 <span
@@ -375,7 +378,7 @@ export default function Home() {
           {/* CTA */}
           <div className="flex flex-col items-center gap-3 animate-fade-in-up" style={{ animationDelay: "1.2s", animationFillMode: "both" }}>
             <div className="relative">
-              <FloatingOrbs />
+              
               <Link
                 href="/saju"
                 className="pulse-ring group relative inline-flex items-center gap-2.5 px-10 py-4 bg-gradient-to-r from-purple-500 to-rose-500 hover:from-purple-400 hover:to-amber-400 text-white font-semibold rounded-full transition-all duration-500 hover:scale-[1.06] text-base shadow-lg shadow-purple-500/25 hover:shadow-rose-500/30"
@@ -400,7 +403,7 @@ export default function Home() {
       <WaveDivider color="rgba(124, 58, 237, 0.04)" />
 
       {/* ═══════════════════ RPG DASHBOARD ═══════════════════ */}
-      <section ref={rpgReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
+      <section ref={rpgReveal.ref} className="relative z-10 px-6 md:px-8 py-16 md:py-24">
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${rpgReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-purple-400/60 text-xs tracking-[0.25em] uppercase mb-4 font-display">Life Dashboard</p>
@@ -499,7 +502,7 @@ export default function Home() {
       <WaveDivider flip color="rgba(244, 114, 182, 0.03)" />
 
       {/* ═══════════════════ CHARACTERS ═══════════════════ */}
-      <section ref={charReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
+      <section ref={charReveal.ref} className="relative z-10 px-6 md:px-8 py-16 md:py-24">
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${charReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-rose-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Counselors</p>
@@ -565,7 +568,7 @@ export default function Home() {
       <WaveDivider color="rgba(59, 130, 246, 0.03)" />
 
       {/* ═══════════════════ HOW IT WORKS ═══════════════════ */}
-      <section ref={howReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
+      <section ref={howReveal.ref} className="relative z-10 px-6 md:px-8 py-16 md:py-24">
         <div className="max-w-3xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${howReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-blue-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Process</p>
@@ -599,7 +602,7 @@ export default function Home() {
       <WaveDivider flip color="rgba(251, 191, 36, 0.03)" />
 
       {/* ═══════════════════ SOCIAL ═══════════════════ */}
-      <section ref={socialReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
+      <section ref={socialReveal.ref} className="relative z-10 px-6 md:px-8 py-16 md:py-24">
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${socialReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-amber-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Together</p>
@@ -648,7 +651,7 @@ export default function Home() {
       <WaveDivider color="rgba(244, 114, 182, 0.03)" />
 
       {/* ═══════════════════ PROFILE CARD ═══════════════════ */}
-      <section ref={profileReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
+      <section ref={profileReveal.ref} className="relative z-10 px-6 md:px-8 py-16 md:py-24">
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className={`transition-all duration-700 ${profileReveal.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
@@ -705,7 +708,7 @@ export default function Home() {
       <WaveDivider flip color="rgba(139, 92, 246, 0.03)" />
 
       {/* ═══════════════════ FEATURES ═══════════════════ */}
-      <section ref={featureReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
+      <section ref={featureReveal.ref} className="relative z-10 px-6 md:px-8 py-16 md:py-24">
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${featureReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-violet-400/50 text-xs tracking-[0.25em] uppercase mb-4 font-display">Features</p>
@@ -732,7 +735,7 @@ export default function Home() {
       <WaveDivider color="rgba(251, 191, 36, 0.02)" />
 
       {/* ═══════════════════ SOCIAL PROOF ═══════════════════ */}
-      <section ref={proofReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
+      <section ref={proofReveal.ref} className="relative z-10 px-6 md:px-8 py-16 md:py-24">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-3 gap-4 mb-20">
             {[
@@ -771,7 +774,7 @@ export default function Home() {
       <WaveDivider flip color="rgba(124, 58, 237, 0.04)" />
 
       {/* ═══════════════════ FINAL CTA ═══════════════════ */}
-      <section ref={ctaReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
+      <section ref={ctaReveal.ref} className="relative z-10 px-6 md:px-8 py-16 md:py-24">
         <div className="max-w-3xl mx-auto text-center">
           <div className="flex justify-center gap-2 mb-10 opacity-[0.2]">
             {characters.map((c) => (
@@ -790,7 +793,7 @@ export default function Home() {
               <br />인생의 큰 그림은 노을에게 물어보세요.
             </p>
             <div className="relative inline-block">
-              <FloatingOrbs />
+              
               <Link
                 href="/saju"
                 className="pulse-ring group relative inline-flex items-center gap-2.5 px-12 py-5 bg-gradient-to-r from-purple-500 via-rose-500 to-amber-500 hover:from-amber-500 hover:via-rose-500 hover:to-purple-500 text-white font-semibold rounded-full transition-all duration-700 hover:scale-[1.06] text-lg shadow-xl shadow-purple-500/20"
@@ -807,8 +810,11 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════ FOOTER ═══════════════════ */}
-      <footer className="relative z-10 text-center py-20 border-t border-white/[0.04]">
-        <Image src="/logo.png" alt="UNMYO" width={160} height={52} className="mx-auto mb-3" quality={95} />
+      <footer className="relative z-10 text-center py-12 border-t border-white/[0.04]">
+        <div className="mx-auto mb-3">
+          <span className="text-2xl font-black tracking-wider bg-gradient-to-r from-purple-400 via-rose-300 to-amber-300 bg-clip-text text-transparent font-display">UN<span className="relative">M<span className="absolute -top-1.5 left-1/2 -translate-x-1/2 text-[8px]">🐱</span></span>YO</span>
+          <p className="text-xs text-slate-400/50 tracking-[0.3em] mt-0.5 font-serif-kr">운묘</p>
+        </div>
         <p className="text-xs text-slate-600">© 2026 운묘. All rights reserved.</p>
       </footer>
     </main>
