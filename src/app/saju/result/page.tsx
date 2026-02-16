@@ -116,6 +116,97 @@ const LUCKY_GUIDE = [
   { label: "행운의 보석", value: "자수정, 백수정", sub: "金水 기운 조화", icon: "💎" },
 ];
 
+/* ─── 섹션별 캐릭터 말풍선 코멘트 ─── */
+const SECTION_COMMENTS: Record<string, Record<string, string>> = {
+  saju: {
+    yunha: "자네의 사주 네 기둥일세. 천간은 하늘의 기운, 지지는 땅의 기운이지.",
+    harin: "짜잔~ 이게 네 사주야! 위에 있는 게 천간, 아래가 지지~ 쉽지? ㅎㅎ",
+    jiho: "사주의 네 기둥이야. 각각 태어난 해, 달, 날, 시간을 나타내지.",
+    seojin: "...사주 팔자입니다. 여덟 글자에 당신의 운명이 담겨 있죠.",
+    noeul: "허허, 네 사주 네 기둥이란다. 천간과 지지가 어우러져 운명을 만드는 거야.",
+    myo: "냥~ 이게 네 사주 네 기둥이야! 글자 하나하나에 비밀이 숨어있다구 ✨",
+  },
+  ohaeng: {
+    yunha: "오행의 균형을 보면 자네의 기질을 알 수 있네.",
+    harin: "오행 밸런스! 어떤 기운이 센지 보이지? 木이 제일 많네~ 🌿",
+    jiho: "오행 분포도야. 균형이 중요하지만, 치우침에도 의미가 있어.",
+    seojin: "오행 밸런스... 木이 과다하군요. 우유부단해지기 쉬우니 주의하세요.",
+    noeul: "오행은 세상을 이루는 다섯 기운이란다. 네 안에도 이 기운들이 흐르고 있어.",
+    myo: "오행 차트다냥! 木이 제일 많네~ 나무처럼 쭉쭉 자라겠다 냥냥 🌳",
+  },
+  daeun: {
+    yunha: "대운은 10년 단위의 큰 흐름이네. 지금이 도약의 시기일세.",
+    harin: "대운이란 건 인생의 큰 챕터 같은 거야! 지금 네 챕터 봐봐~ 📖",
+    jiho: "대운은 10년 주기 운의 흐름이야. 현재 구간이 가장 중요해.",
+    seojin: "대운... 인생의 큰 줄기입니다. 현재 위치를 정확히 아는 게 중요하죠.",
+    noeul: "대운은 인생이라는 강의 굽이굽이란다. 지금 어디쯤 흐르고 있는지 보려무나.",
+    myo: "인생의 빅 이벤트 타임라인이다냥! 지금이 제일 재밌는 구간이야~ 🎢",
+  },
+  yearly: {
+    yunha: "2026년 병오년, 불의 기운이 가득한 해일세.",
+    harin: "올해 운세 나왔다!! 어디어디 보자~ 두근두근 💓",
+    jiho: "2026년 세운 분석이야. 숫자로 명확하게 보여줄게.",
+    seojin: "올해 운세입니다. 감상적으로 볼 필요 없어요, 팩트만 봅시다.",
+    noeul: "올 한해의 운세를 봐볼까나. 좋은 달도 있고, 조심할 달도 있단다.",
+    myo: "2026년 운세 오픈~! 냥이가 특별히 봐줄게 ✨ 기대해도 좋다냥!",
+  },
+  personality: {
+    yunha: "사주로 보는 자네의 성격일세. 꽤 정확할 걸세.",
+    harin: "성격 분석! MBTI보다 더 깊은 거 알지? ㅎㅎ 맞는지 봐봐~",
+    jiho: "사주 기반 성격 유형이야. 객관적으로 자기를 돌아보는 기회가 될 거야.",
+    seojin: "성격 분석입니다. 불편한 진실도 있을 수 있으니 각오하세요.",
+    noeul: "네 성격의 뿌리를 한번 들여다보자꾸나.",
+    myo: "네 성격을 까발려준다냥~! 얼마나 맞는지 보라구 😼",
+  },
+  sipsin: {
+    yunha: "십신은 사주의 인간관계를 보여주는 거라네.",
+    harin: "십신이란 건 사주 속 인연을 보여주는 거야! 어려워 보이지만 쉬워~",
+    jiho: "십신 관계도야. 각 십신이 직업, 재물, 인간관계를 나타내지.",
+    seojin: "십신... 사주 해석의 핵심입니다. 이것만 잘 봐도 반은 알 수 있죠.",
+    noeul: "십신은 네 주변 사람과 환경을 보여주는 거란다.",
+    myo: "십신 관계도다냥! 복잡해 보이지만 냥이가 쉽게 설명해줄게~",
+  },
+  sinsal: {
+    yunha: "신살은 특별한 기운이네. 길신은 축복, 흉신은 주의하게.",
+    harin: "신살! 이건 특수 능력 같은 거야 ㅎㅎ 좋은 것도 있고 조심할 것도 있어~",
+    jiho: "신살은 사주의 특수 변수야. 통계적으로도 의미 있는 지표지.",
+    seojin: "신살 분석입니다. 미신이라고 무시하면 안 돼요.",
+    noeul: "신살은 하늘이 내려준 특별한 표식이란다.",
+    myo: "특수 능력치 언락이다냥! 🎮 어떤 신살이 있는지 봐봐~",
+  },
+  lucky: {
+    yunha: "이것들을 가까이 두면 운이 트일 걸세.",
+    harin: "행운 아이템 모음! 진짜 효과 있으니까 꼭 참고해~ 🍀",
+    jiho: "행운 가이드야. 작은 것부터 실천해보는 건 어떨까.",
+    seojin: "...행운의 조건들입니다. 믿든 말든 손해 볼 건 없잖아요?",
+    noeul: "이 것들을 생활 속에 두면 좋은 기운이 찾아올 게야.",
+    myo: "행운 부스터 아이템이다냥~! 이거 장착하면 운이 쭉쭉↑ 🚀",
+  },
+};
+
+/* ─── CharacterBubble 컴포넌트 ─── */
+function CharacterBubble({ character, section, delay }: {
+  character: { id: string; name: string; image: string; elementColor: string };
+  section: string;
+  delay: number;
+}) {
+  const comment = SECTION_COMMENTS[section]?.[character.id];
+  if (!comment) return null;
+  return (
+    <div className="flex gap-2.5 items-start mb-3 chat-bubble" style={{ animationDelay: `${delay}s` }}>
+      <div className={`flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br ${character.elementColor}`}>
+        <Image src={character.image} alt={character.name} width={32} height={32} className="w-full h-full object-cover" />
+      </div>
+      <div>
+        <p className="text-white/30 text-[10px] mb-1 ml-1">{character.name}</p>
+        <div className="bg-white/[0.05] backdrop-blur border border-white/[0.08] rounded-2xl rounded-tl-sm px-4 py-3 text-white/90 text-sm leading-relaxed max-w-md">
+          {comment}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ─── 캐릭터 해석 (확장) ─── */
 const INTERPRETATIONS: Record<string, { section: string; messages: string[] }[]> = {
   yunha: [
@@ -378,6 +469,7 @@ function ResultContent() {
         <WaveDivider />
 
         {/* ═══ SECTION 2: 사주 팔자 4주 카드 ═══ */}
+        <CharacterBubble character={character} section="saju" delay={0.2} />
         <section className="stagger-2">
           <h2 className="section-title">사주 팔자</h2>
           <div className="grid grid-cols-4 gap-2 sm:gap-3">
@@ -420,6 +512,7 @@ function ResultContent() {
         <WaveDivider />
 
         {/* ═══ SECTION 3: 오행 밸런스 ═══ */}
+        <CharacterBubble character={character} section="ohaeng" delay={0.4} />
         <section className="stagger-3">
           <h2 className="section-title">오행 밸런스</h2>
           <div className="glass-card rounded-2xl p-5">
@@ -470,6 +563,7 @@ function ResultContent() {
         <WaveDivider />
 
         {/* ═══ SECTION 4: 대운 타임라인 ═══ */}
+        <CharacterBubble character={character} section="daeun" delay={0.6} />
         <section className="stagger-4">
           <h2 className="section-title">대운(大運) 타임라인</h2>
           <div className="glass-card rounded-2xl p-5">
@@ -505,6 +599,7 @@ function ResultContent() {
         <WaveDivider />
 
         {/* ═══ SECTION 5: 올해 운세 ═══ */}
+        <CharacterBubble character={character} section="yearly" delay={0.8} />
         <section className="stagger-5">
           <h2 className="section-title">2026년 {YEAR_FORTUNE.hanja}년 운세</h2>
           <div className="glass-card rounded-2xl p-5 space-y-6">
@@ -557,6 +652,7 @@ function ResultContent() {
         <WaveDivider />
 
         {/* ═══ SECTION 6: 성격 분석 ═══ */}
+        <CharacterBubble character={character} section="personality" delay={1.0} />
         <section className="stagger-6">
           <h2 className="section-title">성격 분석</h2>
           <div className="glass-card rounded-2xl p-5 space-y-5">
@@ -601,6 +697,7 @@ function ResultContent() {
         <WaveDivider />
 
         {/* ═══ SECTION 7: 십신 관계도 ═══ */}
+        <CharacterBubble character={character} section="sipsin" delay={1.2} />
         <section className="stagger-7">
           <h2 className="section-title">십신(十神) 관계도</h2>
           <div className="glass-card rounded-2xl p-5">
@@ -633,6 +730,7 @@ function ResultContent() {
         <WaveDivider />
 
         {/* ═══ SECTION 8: 신살 분석 ═══ */}
+        <CharacterBubble character={character} section="sinsal" delay={1.4} />
         <section className="stagger-8">
           <h2 className="section-title">신살(神殺) 분석</h2>
           <div className="space-y-2">
@@ -689,6 +787,7 @@ function ResultContent() {
         <WaveDivider />
 
         {/* ═══ SECTION 10: 행운 가이드 ═══ */}
+        <CharacterBubble character={character} section="lucky" delay={1.6} />
         <section className="stagger-10">
           <h2 className="section-title">행운 가이드</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -834,6 +933,9 @@ function ResultContent() {
 
         .msg-bubble {
           animation: msgAppear 0.4s ease-out both;
+        }
+        .chat-bubble {
+          animation: fadeInUp 0.5s ease-out both;
         }
 
         ${Array.from({ length: 12 }, (_, i) => `
