@@ -116,16 +116,16 @@ export default function Home() {
         {/* Floating character images behind hero */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-[15%] left-[5%] w-24 h-32 md:w-32 md:h-44 rounded-2xl overflow-hidden opacity-[0.08] animate-float-slow rotate-[-6deg]">
-            <Image src="/characters/yunha.png" alt="" fill className="object-cover" sizes="128px" />
+            <Image src="/characters/yunha.png" alt="" fill className="object-cover" sizes="128px" quality={85} />
           </div>
           <div className="absolute top-[20%] right-[5%] w-24 h-32 md:w-32 md:h-44 rounded-2xl overflow-hidden opacity-[0.06] animate-float-slow rotate-[8deg]" style={{ animationDelay: "2s" }}>
-            <Image src="/characters/harin.png" alt="" fill className="object-cover" sizes="128px" />
+            <Image src="/characters/harin.png" alt="" fill className="object-cover" sizes="128px" quality={85} />
           </div>
           <div className="absolute bottom-[20%] left-[8%] w-20 h-28 md:w-28 md:h-38 rounded-2xl overflow-hidden opacity-[0.05] animate-float-slow rotate-[4deg]" style={{ animationDelay: "4s" }}>
-            <Image src="/characters/noeul.png" alt="" fill className="object-cover" sizes="112px" />
+            <Image src="/characters/noeul.png" alt="" fill className="object-cover" sizes="112px" quality={85} />
           </div>
           <div className="absolute bottom-[25%] right-[8%] w-20 h-28 md:w-28 md:h-38 rounded-2xl overflow-hidden opacity-[0.05] animate-float-slow rotate-[-5deg]" style={{ animationDelay: "3s" }}>
-            <Image src="/characters/seojin.png" alt="" fill className="object-cover" sizes="112px" />
+            <Image src="/characters/seojin.png" alt="" fill className="object-cover" sizes="112px" quality={85} />
           </div>
         </div>
 
@@ -175,7 +175,7 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </Link>
-            <p className="text-[11px] text-slate-600">가입 없이 · 바로 시작</p>
+            <p className="text-xs text-slate-600">가입 없이 · 바로 시작</p>
           </div>
         </div>
 
@@ -190,7 +190,7 @@ export default function Home() {
       <section ref={rpgReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${rpgReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <p className="text-purple-400/60 text-[11px] tracking-[0.3em] uppercase mb-4">Life Dashboard</p>
+            <p className="text-purple-400/60 text-xs tracking-[0.25em] uppercase mb-4">Life Dashboard</p>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight">
               내 인생을 스탯으로 본다면
             </h2>
@@ -229,11 +229,11 @@ export default function Home() {
               <div className="relative rounded-2xl bg-gradient-to-br from-purple-900/20 via-slate-900/40 to-rose-900/10 border border-white/[0.06] p-8 animate-glow">
                 {/* Character peek */}
                 <div className="absolute -top-10 -right-4 w-20 h-28 rounded-xl overflow-hidden opacity-20 rotate-6">
-                  <Image src="/characters/myo.png" alt="" fill className="object-cover" sizes="80px" />
+                  <Image src="/characters/myo.png" alt="" fill className="object-cover" sizes="80px" quality={85} />
                 </div>
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-[10px] text-slate-600 tracking-[0.2em] uppercase">Sample Dashboard</p>
-                  <span className="text-[10px] text-purple-400/60 px-2 py-0.5 border border-purple-500/20 rounded-full">Preview</span>
+                  <p className="text-xs text-slate-600 tracking-[0.2em] uppercase">Sample Dashboard</p>
+                  <span className="text-[11px] text-purple-400/60 px-2 py-0.5 border border-purple-500/20 rounded-full">Preview</span>
                 </div>
                 <div className="text-center mb-6">
                   <p className="text-2xl font-black text-white tracking-tight">壬午 일주</p>
@@ -246,9 +246,9 @@ export default function Home() {
                     { label: "Gold", value: "45", sub: "재물운", color: "text-amber-400" },
                   ].map((g, i) => (
                     <div key={i} className="p-3 rounded-xl bg-white/[0.03] text-center">
-                      <p className="text-[10px] text-slate-600 mb-1">{g.label}</p>
+                      <p className="text-xs text-slate-600 mb-1">{g.label}</p>
                       <p className={`text-xl font-black ${g.color} tabular-nums`}>{g.value}</p>
-                      <p className="text-[10px] text-slate-600 mt-0.5">{g.sub}</p>
+                      <p className="text-xs text-slate-600 mt-0.5">{g.sub}</p>
                     </div>
                   ))}
                 </div>
@@ -274,7 +274,7 @@ export default function Home() {
       <section className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 animate-fade-in-up">
-            <p className="text-rose-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Counselors</p>
+            <p className="text-rose-400/50 text-xs tracking-[0.25em] uppercase mb-4">Counselors</p>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight">
               여섯 명의 상담사, 각자의 시선
             </h2>
@@ -301,7 +301,7 @@ export default function Home() {
                         alt={char.name}
                         fill
                         className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-700"
-                        sizes="(max-width: 768px) 50vw, 33vw"
+                        sizes="(max-width: 768px) 50vw, 33vw" quality={90}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e27] via-[#0a0e27]/20 to-transparent" />
                     </div>
@@ -310,7 +310,7 @@ export default function Home() {
                         <p className={`text-xs font-medium bg-gradient-to-r ${char.elementColor} bg-clip-text text-transparent`}>
                           {char.element}
                         </p>
-                        <span className="text-[10px] text-slate-600">
+                        <span className="text-xs text-slate-600">
                           {char.gender === "M" ? "M" : "F"} · {char.age}
                         </span>
                       </div>
@@ -318,7 +318,7 @@ export default function Home() {
                       <p className="text-xs text-slate-400/80 italic mb-2">{meta?.line}</p>
                       <div className="flex flex-wrap gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         {meta?.tags.map((t) => (
-                          <span key={t} className="text-[10px] text-slate-500 tracking-wide">#{t}</span>
+                          <span key={t} className="text-[11px] text-slate-500 tracking-wide">#{t}</span>
                         ))}
                       </div>
                     </div>
@@ -334,7 +334,7 @@ export default function Home() {
       <section className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 animate-fade-in-up">
-            <p className="text-blue-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Process</p>
+            <p className="text-blue-400/50 text-xs tracking-[0.25em] uppercase mb-4">Process</p>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight">3분이면 충분합니다</h2>
           </div>
 
@@ -354,7 +354,7 @@ export default function Home() {
                 } bg-clip-text text-transparent`}>{s.n}</span>
                 <div>
                   <h3 className="text-lg font-bold text-white mb-1.5">{s.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">{s.desc}</p>
+                  <p className="text-sm text-slate-400 leading-relaxed">{s.desc}</p>
                 </div>
               </div>
             ))}
@@ -366,7 +366,7 @@ export default function Home() {
       <section ref={socialReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${socialReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <p className="text-amber-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Together</p>
+            <p className="text-amber-400/50 text-xs tracking-[0.25em] uppercase mb-4">Together</p>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-5 tracking-tight">
               혼자 보면 아쉽잖아요
             </h2>
@@ -386,7 +386,7 @@ export default function Home() {
                 style={{ transitionDelay: `${i * 150 + 200}ms` }}
               >
                 <h3 className="text-lg font-bold text-white mb-3">{f.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{f.desc}</p>
+                <p className="text-sm text-slate-400 leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -407,7 +407,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="animate-fade-in-up">
-              <p className="text-rose-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Share</p>
+              <p className="text-rose-400/50 text-xs tracking-[0.25em] uppercase mb-4">Share</p>
               <h2 className="text-3xl md:text-4xl font-black text-white mb-5 tracking-tight leading-tight">
                 내 사주를 카드로<br />만들어 공유하기
               </h2>
@@ -431,7 +431,7 @@ export default function Home() {
               <div className="relative">
                 {/* Character behind card */}
                 <div className="absolute -top-8 -left-6 w-16 h-24 rounded-lg overflow-hidden opacity-[0.12] rotate-[-10deg] animate-float-slow">
-                  <Image src="/characters/yunha.png" alt="" fill className="object-cover" sizes="64px" />
+                  <Image src="/characters/yunha.png" alt="" fill className="object-cover" sizes="64px" quality={85} />
                 </div>
                 <div className="w-60 rounded-2xl bg-gradient-to-br from-purple-900/20 to-rose-900/10 border border-white/[0.06] p-6 hover:border-purple-500/20 transition-all duration-500 hover:rotate-1 animate-glow">
                   <div className="text-center mb-5">
@@ -445,11 +445,11 @@ export default function Home() {
                   </div>
                   <div className="mt-5 flex flex-wrap gap-1.5 justify-center">
                     {["직감형", "승부사", "자유영혼"].map((t) => (
-                      <span key={t} className="text-[10px] text-slate-500 px-2 py-0.5 rounded-full border border-white/[0.06]">{t}</span>
+                      <span key={t} className="text-[11px] text-slate-500 px-2 py-0.5 rounded-full border border-white/[0.06]">{t}</span>
                     ))}
                   </div>
                   <div className="mt-5 pt-4 border-t border-white/[0.04] text-center">
-                    <p className="text-[10px] text-slate-600 tracking-[0.15em]">UNMYO</p>
+                    <p className="text-xs text-slate-600 tracking-[0.15em]">UNMYO</p>
                   </div>
                 </div>
               </div>
@@ -462,7 +462,7 @@ export default function Home() {
       <section ref={featureReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${featureReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <p className="text-violet-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Features</p>
+            <p className="text-violet-400/50 text-xs tracking-[0.25em] uppercase mb-4">Features</p>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight">
               사주 앱은 많지만, 이런 건 없었습니다
             </h2>
@@ -498,7 +498,7 @@ export default function Home() {
                 <p className={`text-2xl md:text-4xl font-black tabular-nums tracking-tight bg-gradient-to-b ${c.color} bg-clip-text text-transparent`}>
                   {c.count.toLocaleString()}
                 </p>
-                <p className="text-[11px] text-slate-600 mt-2 tracking-wide">{c.label}</p>
+                <p className="text-xs text-slate-600 mt-2 tracking-wide">{c.label}</p>
               </div>
             ))}
           </div>
@@ -552,7 +552,7 @@ export default function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </Link>
-          <p className="text-[11px] text-slate-600 mt-5">가입 없이 바로 시작</p>
+          <p className="text-xs text-slate-600 mt-5">가입 없이 바로 시작</p>
         </div>
       </section>
 
