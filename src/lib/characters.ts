@@ -45,7 +45,7 @@ export const characters: Character[] = [
     image: "/characters/jiho.png",
     gradient: "from-amber-900/40 to-yellow-900/40",
     gender: "M",
-    age: 29,
+    age: 38,
     role: "counselor",
   },
   {
@@ -65,11 +65,11 @@ export const characters: Character[] = [
     name: "노을",
     element: "水 · 물",
     elementColor: "from-blue-500 to-cyan-400",
-    description: "현실과 꿈의 경계에서 별을 읽는, 초월적 점성술사",
+    description: "천문대에서 별을 읽는, 전설의 점성술사 할머니",
     image: "/characters/noeul.png",
     gradient: "from-blue-900/40 to-cyan-900/40",
     gender: "F",
-    age: 27,
+    age: 68,
     role: "counselor",
   },
   {
