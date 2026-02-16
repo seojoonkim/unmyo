@@ -100,31 +100,31 @@ export default function Home() {
   const proofReveal = useReveal();
 
   return (
-    <main className="relative min-h-screen bg-[#0a0e27] overflow-x-hidden">
+    <main className="relative min-h-screen bg-[#0a0e27] overflow-x-hidden pb-20 md:pb-0">
       <Starfield />
 
       {/* Ambient gradients */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-purple-600/8 rounded-full blur-[150px]" />
-        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-rose-600/5 rounded-full blur-[130px]" />
-        <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-blue-600/6 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/3 w-[500px] h-[500px] bg-amber-500/4 rounded-full blur-[140px]" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-purple-600/4 rounded-full blur-[150px]" />
+        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-rose-600/3 rounded-full blur-[130px]" />
+        <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-blue-600/3 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/3 w-[500px] h-[500px] bg-amber-500/2 rounded-full blur-[140px]" />
       </div>
 
       {/* ═══════════════════ HERO ═══════════════════ */}
-      <section className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+      <section className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 md:px-8">
         {/* Floating character images behind hero */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[15%] left-[5%] w-24 h-32 md:w-32 md:h-44 rounded-2xl overflow-hidden opacity-20 animate-float-slow rotate-[-6deg]">
+          <div className="absolute top-[15%] left-[5%] w-24 h-32 md:w-32 md:h-44 rounded-2xl overflow-hidden opacity-[0.08] animate-float-slow rotate-[-6deg]">
             <Image src="/characters/yunha.png" alt="" fill className="object-cover" sizes="128px" />
           </div>
-          <div className="absolute top-[20%] right-[5%] w-24 h-32 md:w-32 md:h-44 rounded-2xl overflow-hidden opacity-15 animate-float-slow rotate-[8deg]" style={{ animationDelay: "2s" }}>
+          <div className="absolute top-[20%] right-[5%] w-24 h-32 md:w-32 md:h-44 rounded-2xl overflow-hidden opacity-[0.06] animate-float-slow rotate-[8deg]" style={{ animationDelay: "2s" }}>
             <Image src="/characters/harin.png" alt="" fill className="object-cover" sizes="128px" />
           </div>
-          <div className="absolute bottom-[20%] left-[8%] w-20 h-28 md:w-28 md:h-38 rounded-2xl overflow-hidden opacity-10 animate-float-slow rotate-[4deg]" style={{ animationDelay: "4s" }}>
+          <div className="absolute bottom-[20%] left-[8%] w-20 h-28 md:w-28 md:h-38 rounded-2xl overflow-hidden opacity-[0.05] animate-float-slow rotate-[4deg]" style={{ animationDelay: "4s" }}>
             <Image src="/characters/noeul.png" alt="" fill className="object-cover" sizes="112px" />
           </div>
-          <div className="absolute bottom-[25%] right-[8%] w-20 h-28 md:w-28 md:h-38 rounded-2xl overflow-hidden opacity-12 animate-float-slow rotate-[-5deg]" style={{ animationDelay: "3s" }}>
+          <div className="absolute bottom-[25%] right-[8%] w-20 h-28 md:w-28 md:h-38 rounded-2xl overflow-hidden opacity-[0.05] animate-float-slow rotate-[-5deg]" style={{ animationDelay: "3s" }}>
             <Image src="/characters/seojin.png" alt="" fill className="object-cover" sizes="112px" />
           </div>
         </div>
@@ -187,7 +187,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════ RPG DASHBOARD ═══════════════════ */}
-      <section ref={rpgReveal.ref} className="relative z-10 px-4 py-28">
+      <section ref={rpgReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${rpgReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-purple-400/60 text-[11px] tracking-[0.3em] uppercase mb-4">Life Dashboard</p>
@@ -228,7 +228,7 @@ export default function Home() {
             <div className={`transition-all duration-700 delay-400 ${rpgReveal.visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}>
               <div className="relative rounded-2xl bg-gradient-to-br from-purple-900/20 via-slate-900/40 to-rose-900/10 border border-white/[0.06] p-8 animate-glow">
                 {/* Character peek */}
-                <div className="absolute -top-10 -right-4 w-20 h-28 rounded-xl overflow-hidden opacity-40 rotate-6">
+                <div className="absolute -top-10 -right-4 w-20 h-28 rounded-xl overflow-hidden opacity-20 rotate-6">
                   <Image src="/characters/myo.png" alt="" fill className="object-cover" sizes="80px" />
                 </div>
                 <div className="flex items-center justify-between mb-6">
@@ -271,7 +271,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════ CHARACTERS ═══════════════════ */}
-      <section className="relative z-10 px-4 py-28">
+      <section className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 animate-fade-in-up">
             <p className="text-rose-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Counselors</p>
@@ -331,7 +331,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════ HOW IT WORKS ═══════════════════ */}
-      <section className="relative z-10 px-4 py-28">
+      <section className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 animate-fade-in-up">
             <p className="text-blue-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Process</p>
@@ -346,7 +346,7 @@ export default function Home() {
             ].map((s, i) => (
               <div
                 key={i}
-                className="animate-fade-in-up flex items-start gap-6 py-8 border-b border-white/[0.04] last:border-0 group hover:bg-white/[0.01] -mx-4 px-4 rounded-xl transition-colors duration-300"
+                className="animate-fade-in-up flex items-start gap-6 py-8 border-b border-white/[0.04] last:border-0 group hover:bg-white/[0.01] rounded-xl transition-colors duration-300"
                 style={{ animationDelay: `${i * 0.15}s` }}
               >
                 <span className={`text-2xl font-black tabular-nums shrink-0 pt-0.5 bg-gradient-to-b ${
@@ -363,7 +363,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════ SOCIAL ═══════════════════ */}
-      <section ref={socialReveal.ref} className="relative z-10 px-4 py-28">
+      <section ref={socialReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${socialReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-amber-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Together</p>
@@ -392,7 +392,7 @@ export default function Home() {
           </div>
 
           {/* Floating character between social cards */}
-          <div className="flex justify-center mt-8 gap-3 opacity-30">
+          <div className="flex justify-center mt-8 gap-3 opacity-[0.15]">
             {["jiho", "harin", "myo"].map((id) => (
               <div key={id} className="w-12 h-16 rounded-lg overflow-hidden animate-float-slow" style={{ animationDelay: `${Math.random() * 3}s` }}>
                 <Image src={`/characters/${id}.png`} alt="" width={48} height={64} className="object-cover object-top w-full h-full" />
@@ -403,7 +403,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════ PROFILE CARD ═══════════════════ */}
-      <section className="relative z-10 px-4 py-28">
+      <section className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="animate-fade-in-up">
@@ -430,7 +430,7 @@ export default function Home() {
             <div className="flex justify-center">
               <div className="relative">
                 {/* Character behind card */}
-                <div className="absolute -top-8 -left-6 w-16 h-24 rounded-lg overflow-hidden opacity-25 rotate-[-10deg] animate-float-slow">
+                <div className="absolute -top-8 -left-6 w-16 h-24 rounded-lg overflow-hidden opacity-[0.12] rotate-[-10deg] animate-float-slow">
                   <Image src="/characters/yunha.png" alt="" fill className="object-cover" sizes="64px" />
                 </div>
                 <div className="w-60 rounded-2xl bg-gradient-to-br from-purple-900/20 to-rose-900/10 border border-white/[0.06] p-6 hover:border-purple-500/20 transition-all duration-500 hover:rotate-1 animate-glow">
@@ -459,7 +459,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════ FEATURES ═══════════════════ */}
-      <section ref={featureReveal.ref} className="relative z-10 px-4 py-28">
+      <section ref={featureReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-700 ${featureReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-violet-400/50 text-[11px] tracking-[0.3em] uppercase mb-4">Features</p>
@@ -486,7 +486,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════ SOCIAL PROOF ═══════════════════ */}
-      <section ref={proofReveal.ref} className="relative z-10 px-4 py-28">
+      <section ref={proofReveal.ref} className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-3 gap-4 mb-20">
             {[
@@ -525,10 +525,10 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════ FINAL CTA ═══════════════════ */}
-      <section className="relative z-10 px-4 py-28">
+      <section className="relative z-10 px-6 md:px-8 py-32">
         <div className="max-w-2xl mx-auto text-center">
           {/* Character row */}
-          <div className="flex justify-center gap-2 mb-10 opacity-40">
+          <div className="flex justify-center gap-2 mb-10 opacity-[0.2]">
             {characters.map((c) => (
               <div key={c.id} className="w-10 h-14 rounded-lg overflow-hidden animate-float-slow" style={{ animationDelay: `${Math.random() * 4}s` }}>
                 <Image src={c.image} alt="" width={40} height={56} className="object-cover object-top w-full h-full" />
@@ -557,7 +557,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════ FOOTER ═══════════════════ */}
-      <footer className="relative z-10 text-center py-16 border-t border-white/[0.04]">
+      <footer className="relative z-10 text-center py-20 border-t border-white/[0.04]">
         <p className="text-sm font-semibold bg-gradient-to-r from-purple-400 to-rose-300 bg-clip-text text-transparent tracking-wider mb-1">UNMYO</p>
         <p className="text-xs text-slate-600">© 2026 운묘. All rights reserved.</p>
       </footer>
