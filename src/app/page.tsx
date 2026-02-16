@@ -335,6 +335,16 @@ export default function Home() {
         </motion.div>
 
         <motion.div className="relative max-w-4xl mx-auto text-center" style={{ opacity: heroOpacity }}>
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="mb-8"
+          >
+            <Image src="/logo.png" alt="UNMYO" width={180} height={60} className="mx-auto" quality={95} />
+          </motion.div>
+
           {/* Live badge */}
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -918,7 +928,7 @@ export default function Home() {
 
       {/* ═══════════════════ FOOTER ═══════════════════ */}
       <footer className="relative z-10 text-center py-20 border-t border-white/[0.04]">
-        <p className="text-sm font-semibold bg-gradient-to-r from-purple-400 to-rose-300 bg-clip-text text-transparent tracking-wider mb-1 font-display">UNMYO</p>
+        <Image src="/logo.png" alt="UNMYO" width={120} height={40} className="mx-auto mb-2" quality={95} />
         <p className="text-xs text-slate-600">© 2026 운묘. All rights reserved.</p>
       </footer>
 
